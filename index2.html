@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    #controlPanel {
+      float: left;
+      padding-top: 30px;
+    }
+
+    .button {
+      background-color: gray;
+      color: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin: 90px 40px;
+      cursor: pointer;
+    }
+
+    #traffic-light {
+      height: 550px;
+      width: 200px;
+      float: left;
+      background-color: #333;
+      border-radius: 40px;
+      margin: 30px 0;
+      padding: 20px;
+    }
+
+    .bulb {
+      height: 150px;
+      width: 150px;
+      background-color: #111;
+      border-radius: 50%;
+      margin: 25px auto;
+      transition: background 500ms;
+    }
+    
+@media(max-width: 500px) {
+    .button {
+      transform: translate(10px, 80px);
+      background-color: #444;
+      color: white;
+      font-size: 35px;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      margin: 15px 1px 0px 1px;
+      cursor: pointer;
+    }
+    #controlPanel {
+        padding-top: 5px;
+    }
+    #traffic-light {
+        max-height: 350px;
+        max-width: 102px;
+        transform: translate(40px, 5px);
+        border-radius: 15px;
+    }
+    .bulb {
+        max-width: 102px;
+        max-height: 102px;
+        transform: translate(0px, -30px);
+    }
+}
+  </style>
+</head>
+
+<body>
+  <div id="controlPanel">
+    <h1 id="stopButton" class="button">Stop</h1>
+    <h1 id="slowButton" class="button">Slow</h1>
+    <h1 id="goButton" class="button">Go</h1>
+  </div>
+  <div id="traffic-light">
+    <div id="stopLight" class="bulb"></div>
+    <div id="slowLight" class="bulb"></div>
+    <div id="goLight" class="bulb"></div>
+  </div>
+</body>
+
+<script>
+  document.getElementById('stopButton').onclick = illuminateRed;
+  document.getElementById('slowButton').onclick = illuminateYellow;
+  document.getElementById('goButton').onclick = illuminateGreen;
+
+  function illuminateRed() {
+    clearLights();
+    document.getElementById('stopLight').style.backgroundColor = "red";
+  }
+
+  function illuminateYellow() {
+    clearLights();
+    document.getElementById('slowLight').style.backgroundColor = "yellow";
+  }
+  
+  function illuminateGreen() {
+        clearLights();
+    document.getElementById('goLight').style.backgroundColor = "green";
+  }
+
+  function clearLights() {
+    document.getElementById('stopLight').style.backgroundColor = "black";
+    document.getElementById('slowLight').style.backgroundColor = "black";
+    document.getElementById('goLight').style.backgroundColor = "black";
+  }
+</script>
